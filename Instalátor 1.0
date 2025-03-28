@@ -1,0 +1,12 @@
+@echo off
+title Instalator aplikaci
+:: Kontrola oprávnění správce
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo Tento skript musi byt spusten jako spravce!
+    pause
+    exit /b
+)
+
+:: Spustí PowerShell příkaz s oprávněním správce a udrží okno otevřené
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm christitus.com/win | iex; pause"
